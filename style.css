@@ -1,0 +1,571 @@
+/* --- SYSTEM RESET --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --neon-cyan: #00f3ff;
+    --neon-glow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+    --bg-dark: rgba(8, 8, 12, 0.85);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    color: #ffffff;
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+}
+
+/* --- Video Background Setup --- */
+.video-bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2;
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    z-index: -1;
+}
+
+/* --- Vertical Column Header --- */
+header {
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border-right: 1px solid var(--neon-cyan);
+    box-shadow: 5px 0 20px rgba(0, 243, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    position: fixed;
+    gap: 50px;
+    z-index: 10;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-glow);
+    letter-spacing: 2px;
+}
+
+header nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: left;
+    width: 100%;
+    padding-left: 60px;
+}
+
+header a {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+header a:hover {
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-glow);
+    transform: translateX(10px);
+}
+
+/* --- Main Content Container --- */
+main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all sections perfectly */
+}
+
+/* --- Hero Section Fix --- */
+.hero-section {
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1100px; /* Keeps text from stretching too far */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 40px; /* Balanced side padding */
+}
+
+/* --- Hero Section Heading --- */
+/* --- Hero Section Heading --- */
+/* --- Hero Section Heading --- */
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px var(--neon-cyan);
+}
+
+/* Add this utility class for the JS fade effect */
+.glitch-text {
+    transition: opacity 0.1s ease; /* Makes the disappearance snappy */
+}
+/* --- Mascot Container & Positioning --- */
+
+
+/* --- Mascot Float Animation --- */
+@keyframes mascotHover {
+    0%   { bottom: 70%; filter: drop-shadow(0 0 5px var(--neon-cyan)); }
+    50%  { bottom: 76%; filter: drop-shadow(0 0 25px var(--neon-cyan)); } /* Floats up and glows */
+    100% { bottom: 70%; filter: drop-shadow(0 0 5px var(--neon-cyan)); }
+}
+
+/* --- The Cyber Mascot --- */
+.cyber-mascot {
+    position: absolute;
+    /* Positions the bottom of the image just above the first line of text */
+    bottom: 85%; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px; /* Adjust this width based on your actual PNG size */
+    z-index: 1; /* Puts the character behind the text */
+    opacity: 0.85; /* Slight fade to blend into the shadows */
+    filter: drop-shadow(0 0 20px var(--neon-cyan)); /* Gives the character a glowing aura */
+    animation: mascotHover 6s ease-in-out infinite;
+    pointer-events: none; /* Prevents the image from blocking text selection */
+}
+
+/* --- Mascot Float Animation --- */
+@keyframes mascotHover {
+    0%   { bottom: 85%; filter: drop-shadow(0 0 10px var(--neon-cyan)); }
+    50%  { bottom: 92%; filter: drop-shadow(0 0 30px var(--neon-cyan)); } /* Floats up and glows brighter */
+    100% { bottom: 85%; filter: drop-shadow(0 0 10px var(--neon-cyan)); }
+}
+
+.hero-subtext {
+    font-size: 1.2rem;
+    color: #c0caf5;
+    max-width: 800px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Neon Computer Button --- */
+.neon-btn {
+    background: rgba(0, 243, 255, 0.05);
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+    padding: 18px 40px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2), 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.neon-btn:hover {
+    background: var(--neon-cyan);
+    color: #000000;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    font-weight: bold;
+}
+
+/* --- Content Sections Fix --- */
+.content-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centers the whole block */
+    padding: 100px 40px;
+    border-top: 1px dashed rgba(0, 243, 255, 0.3);
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #ffffff;
+    text-shadow: 0 0 15px #00f3ff;
+    width: 100%;
+    max-width: 1100px; /* Aligns title with the containers */
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* --- Services List Fix --- */
+.services-container {
+    width: 100%;
+    max-width: 1100px;
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 243, 255, 0.4);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 30px rgba(0, 243, 255, 0.1), 0 0 20px rgba(0, 243, 255, 0.1);
+}
+
+.cyber-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cyber-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cyber-list li:last-child {
+    border-bottom: none;
+}
+
+.cyber-list li:hover {
+    color: #ffffff;
+    text-shadow: var(--neon-glow);
+    transform: translateX(10px);
+    border-bottom-color: var(--neon-cyan);
+}
+
+.cyber-task { color: #c0caf5; }
+.cyber-price { color: var(--neon-cyan); font-weight: bold; letter-spacing: 2px; }
+
+/* --- Glowing Neon Project Cards --- */
+.projects-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.project-card {
+    flex: 1;
+    padding: 40px 30px;
+    background: rgba(5, 10, 20, 0.7);
+    backdrop-filter: blur(10px);
+    
+    /* Persistent Glow Theme */
+    border: 1px solid rgba(0, 243, 255, 0.4);
+    border-radius: 6px;
+    box-shadow: 
+        0 0 15px rgba(0, 243, 255, 0.15),
+        inset 0 0 20px rgba(0, 243, 255, 0.1);
+    
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Snappy lift */
+}
+
+/* Electric Hover Effect */
+.project-card:hover {
+    transform: translateY(-12px);
+    border-color: #00f3ff;
+    box-shadow: 
+        0 20px 40px rgba(0, 243, 255, 0.4),
+        inset 0 0 40px rgba(0, 243, 255, 0.2);
+}
+
+.project-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+}
+
+.project-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #c0caf5;
+    text-align: left;
+    margin: 0;
+}
+
+/* --- About Section Fix --- */
+.about-container {
+    width: 100%;
+    max-width: 1100px;
+    padding: 40px;
+    border-left: 4px solid var(--neon-cyan);
+    background: linear-gradient(90deg, rgba(0,243,255,0.1) 0%, transparent 100%);
+    box-shadow: inset 20px 0 40px -20px rgba(0, 243, 255, 0.2);
+}
+
+.about-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #c0caf5;
+    margin: 0;
+}
+
+/* --- Success State: Project Initialized --- */
+.cyber-list li.initialized {
+    border-bottom-color: #00ff00;
+    transform: translateX(15px);
+    background: rgba(0, 255, 0, 0.05);
+    border-left: 3px solid #00ff00;
+    padding-left: 15px;
+}
+
+.cyber-list li.initialized .cyber-task,
+.cyber-list li.initialized .cyber-price {
+    color: #00ff00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.3);
+    font-weight: bold;
+}
+
+/* --- Hamburger Icon Base (Hidden on Desktop) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 100; /* Keeps it above everything */
+}
+
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--neon-cyan);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px var(--neon-cyan);
+}
+/* =========================================
+   MOBILE RESPONSIVENESS PROTOCOLS
+   ========================================= */
+
+/* --- Tablet & Smaller Screens (Under 1024px) --- */
+/* =========================================
+   MOBILE RESPONSIVENESS PROTOCOLS (Under 768px)
+
+   ========================================= */
+
+   /* =========================================
+   CYBER FOOTER PROTOCOLS
+   ========================================= */
+.cyber-footer {
+    width: 100%;
+    background: rgba(5, 5, 8, 0.95);
+    border-top: 1px solid var(--neon-cyan);
+    box-shadow: 0 -5px 20px rgba(0, 243, 255, 0.1); /* Glows upward */
+    padding: 60px 20px 20px 20px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Brand Name with Blinking Cursor */
+.footer-brand h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: #ffffff;
+    text-shadow: var(--neon-glow);
+    margin: 0 0 15px 0;
+    letter-spacing: 2px;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+    color: var(--neon-cyan);
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.footer-brand p {
+    color: #c0caf5;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Footer Headings */
+.footer-links h3, .footer-contact h3 {
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    margin: 0 0 20px 0;
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+/* Footer Links & Hover Effects */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.footer-links a:hover {
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-glow);
+    transform: translateX(5px);
+}
+
+/* Contact Links */
+.footer-contact p {
+    color: #c0caf5;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+}
+
+.footer-contact a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    transition: text-shadow 0.3s ease;
+}
+
+.footer-contact a:hover {
+    text-shadow: var(--neon-glow);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(0, 243, 255, 0.2);
+}
+
+.footer-bottom p {
+    color: #6b7280; /* Dimmer grey so it doesn't distract */
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin: 0;
+}
+@media (max-width: 768px) {
+    /* 1. Header & Hamburger Layout */
+    header {
+        position: fixed; /* Locks to top of phone */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        flex-direction: row; /* Logo left, Hamburger right */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        background: rgba(5, 5, 8, 0.95);
+        border-right: none;
+        border-bottom: 1px solid var(--neon-cyan);
+        z-index: 50;
+    }
+
+    .hamburger {
+        display: flex; /* Reveals the hamburger on mobile */
+    }
+
+    /* 2. Hide Navigation Menu by Default */
+    header nav {
+        display: none; /* Hidden until clicked */
+        position: absolute;
+        top: 70px; /* Drops down just below header */
+        left: 0;
+        width: 100%;
+        background: rgba(5, 5, 8, 0.98);
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        border-bottom: 1px solid var(--neon-cyan);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    /* JavaScript will add this class to reveal the menu */
+    header nav.active {
+        display: flex;
+    }
+
+    /* 3. Main Content Spacing Fixes (Removing Unnecessary Clutter) */
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 70px; /* Accounts for the new fixed header height */
+    }
+
+    .hero-section, .content-section {
+        min-height: auto; /* Removes the massive empty gaps between sections */
+        padding: 60px 20px; /* Tightens the breathing room */
+    }
+
+    /* 4. Force Vertical Project Cards */
+    .projects-grid {
+        flex-direction: column; /* Stacks them top-to-bottom */
+        gap: 20px; /* Tightens space between cards */
+    }
+
+    .project-card {
+        padding: 25px 20px; /* Shrinks card padding so they don't look bloated */
+    }
+
+    /* 5. Typography & Component Scaling */
+    h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .services-container, .about-container {
+        padding: 20px;
+        margin-top: 20px; /* Reduced margin */
+    }
+
+    .cyber-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        font-size: 1rem;
+    }
+}
