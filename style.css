@@ -522,7 +522,22 @@ h1 {
     header nav.active {
         display: flex;
     }
+/* --- TEXT-ONLY CARD OPTIMIZATION --- */
+.text-only-card {
+    padding: 30px; /* Increased padding gives it a premium, spacious feel */
+    background: rgba(15, 15, 15, 0.8); /* Darker backdrop to frame the text */
+    border: 1px solid rgba(0, 255, 204, 0.1); /* Subtle neon border */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Keeps all text aligned cleanly to the left */
+}
 
+/* Updated badge specifically for text-only cards */
+.text-only-card .concept-badge {
+    margin-top: 0; /* Forces it to the very top */
+    margin-bottom: 15px; /* Pushes the headline down slightly */
+}
     /* 3. Main Content Spacing Fixes (Removing Unnecessary Clutter) */
     main {
         margin-left: 0;
