@@ -569,3 +569,53 @@ h1 {
         font-size: 1rem;
     }
 }
+
+/* --- CONCEPT BADGE STYLING --- */
+.concept-badge {
+    display: inline-block;
+    background-color: rgba(0, 255, 204, 0.05); /* Subtle neon glow */
+    border: 1px solid #00ffcc; /* Cybercopy neon accent */
+    color: #00ffcc;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+/* --- MOBILE RESPONSIVE FIXES --- */
+@media (max-width: 768px) {
+    /* Prevent animations from pushing content off-screen horizontally */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Scale down typography for phone screens */
+    h1 { 
+        font-size: 2.2rem !important; 
+        line-height: 1.2;
+    }
+    h2 { 
+        font-size: 1.8rem !important; 
+    }
+    h3 { 
+        font-size: 1.3rem !important; 
+    }
+    p { 
+        font-size: 0.95rem !important; 
+    }
+
+    /* Tone down aggressive hover animations on mobile */
+    .project-card, .animated-box {
+        transform: translateZ(0); /* Hardware acceleration to smooth rendering */
+    }
+    
+    .project-card:hover {
+        /* Replaces a massive scale-up with a subtle lift to prevent mobile layout breaking */
+        transform: translateY(-4px) !important; 
+        box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
+    }
+}
